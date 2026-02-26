@@ -3,7 +3,7 @@ package prog2.vista;
 
 /**
  *
- * @author lauraigual
+ * @author
  */
 public class ExcepcioReserva extends Exception {
 
