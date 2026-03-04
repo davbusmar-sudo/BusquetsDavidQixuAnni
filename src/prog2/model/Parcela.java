@@ -1,4 +1,33 @@
 package prog2.model;
 
-public class Parcela {
+// Parcel·la hereta de la classe Allotjament
+public abstract class Parcela extends Allotjament {
+    // Atributs
+    // la mida de la parcel·la en metres quadrats
+    private double mida;
+    // 'boolean' per indicar si té punt de connexió elèctrica
+    private boolean connexioElectrica;
+
+    // Constructor
+    public Parcela (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, double mida, boolean connexioElectrica){
+        // cridar al constructor de la classe 'Allotjament' per inicialitzar els atributs heretats
+        super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_);
+        // Atributs específics de Parcel·la
+        this.mida = mida;
+        this.connexioElectrica = connexioElectrica;
+    }
+    /*
+    * Mètode que comprova si la parcel·la funciona de manera correcte
+    * Per funciona correctament, la parcel·la ha de tenir punt de connexió elèctrica
+    * @return true si té punt de connexió elèctrica, en cas contrari, retorna false
+     */
+    @Override
+    public boolean correcteFuncionament(){
+       // La parcel·la funciona correctament quan TÉ CONNEXIÓ ELÈCTRICA
+        return connexioElectrica;
+    }
+    // Mètode 'toString'
+    public String toString(){
+        return super.toString()+"Parcela{mida="+mida+", connexioElectrica="+connexioElectrica+"}";
+    }
 }
