@@ -25,8 +25,4 @@ public abstract class Casa extends Allotjament {
     public int getPlacesPerPersones(){
         return placesPerPersones;
     }
-
-    public String toString(){
-        return super.toString()+" Casa{mida="+mida+",numHabitacions="+numHabitacions+", placesPersones="+placesPerPersones+"}";
-    }
 }

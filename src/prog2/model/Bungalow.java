@@ -1,20 +1,22 @@
 package prog2.model;
 
-// Els bungalows tenen pàrquing, terrassa, televisió i aire fred
+// Els bungalows tenen places de pàrquing(1 o 2), terrassa, televisió i aire fred
+// Bungalow hereta de Casa
 public abstract class Bungalow extends Casa {
 
     // Atributs
     private int placesParking;
+    // 'boolean' per indicar si tenen o no
     private boolean terrassa;
-    private boolean tv;
+    private boolean tele;
     private boolean aireFred;
 
     // Constructor
-    public Bungalow(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPersones, int placesParking, boolean terrassa, boolean tv, boolean aireFred){
+    public Bungalow(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPersones, int placesParking, boolean terrassa, boolean tele, boolean aireFred){
         super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPersones);
         this.placesParking = placesParking;
         this.terrassa = terrassa;
-        this.tv = tv;
+        this.tele = tele;
         this.aireFred = aireFred;
     }
 
@@ -26,6 +28,6 @@ public abstract class Bungalow extends Casa {
 
     @Override
     public String toString(){
-        return super.toString()+" Bungalow{placesParking="+placesParking+", terrassa="+terrassa+", tv="+ tv+ ", aireFred="+aireFred+"}";
+        return super.toString()+" Bungalow{places de Parking="+placesParking+", té terrassa?"+terrassa+", té televisió? "+ tele+ ", té aire fred?"+aireFred+"}";
     }
 }
