@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import prog2.vista.ExcepcioReserva;
 
-/**
- * Interfície per definir la forma del Càmping
- */
+
 public class Camping implements InCamping {
 
     private String nom;
@@ -60,11 +58,7 @@ public class Camping implements InCamping {
         return llistaClients.size();
     }
 
-    /**
-     * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
-     * @param nom_ el nom del nou client.
-     * @param dni_ el DNI del nou client.
-     */
+    // Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
     public void afegirClient(String nom_, String dni_) {
         Client client = new Client(nom_, dni_);
         llistaClients.add(client);
@@ -131,6 +125,7 @@ public class Camping implements InCamping {
      * @param dataSortida la data de sortida.
      * @throws ExcepcioReserva si no es pot realitzar la reserva.
      */
+
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
         Allotjament allotjament = buscarAllotjament(id_);
         Client client = buscarClient(dni_);
