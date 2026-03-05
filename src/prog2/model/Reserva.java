@@ -9,6 +9,8 @@ public class Reserva implements InReserva {
     private LocalDate dataEntrada;
     private LocalDate dataSortida;
 
+
+    // getters y setters
     public Allotjament getAllotjament_() {
         return allotjament;
     }
