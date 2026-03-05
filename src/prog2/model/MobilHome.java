@@ -5,8 +5,8 @@ public abstract class MobilHome extends Casa {
     // Atribut
     private boolean terrassaBarbacoa;
     // Constructor
-    public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPersones, boolean terrassaBarbacoa){
-        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPersones);
+    public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPerPersones, boolean terrassaBarbacoa){
+        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPerPersones);
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
@@ -18,6 +18,6 @@ public abstract class MobilHome extends Casa {
 
     @Override
     public String toString(){
-        return super.toString()+"MobilHome{terrassaBarbacoa="+terrassaBarbacoa+"}";
+        return super.toString()+"MobilHome{té terrassa="+terrassaBarbacoa+"}";
     }
 }
