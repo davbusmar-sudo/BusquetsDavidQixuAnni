@@ -3,63 +3,72 @@ package prog2.model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 import prog2.vista.ExcepcioReserva;
 
 /**
  * Interfície per definir la forma del Càmping
- * @author lauraigual
  */
-public interface InCamping {
+public class Camping implements InCamping {
 
-    /**
-     * Retorna el nom del càmping.
-     * @return el nom del càmping.
-     */
-    String getNom();
+    private String nom;
+    private ArrayList<Allotjament> llistaAllotjaments;
+    private ArrayList<Client> llistaClients;
+    private LlistaReserves llistaReserves;
 
-    /**
-     * Retorna la llista de reserves del camping.
-     * @return
-     */
-    LlistaReserves getLlistaReserves();
 
-    /**
-     * Retorna la llista d'allotjaments del camping.
-     */
-    ArrayList<Allotjament> getLlistaAllotjaments();
+     // Constructor de la classe Camping
+    public Camping(String nom) {
+        this.nom = nom;
+        this.llistaAllotjaments = new ArrayList<>();
+        this.llistaClients = new ArrayList<>();
+        this.llistaReserves = new LlistaReserves();
+    }
 
-    /**
-     * Retorna la llista de clients del camping.
-     * @return
-     */
-    ArrayList<Client> getLlistaClients();
+    // Retorna el nom del càmping.
+    public String getNom() {
+        return nom;
+    }
 
-    /**
-     * Retorna el número total d'allotjaments del càmping.
-     * @return el número total d'allotjaments.
-     */
-    int getNumAllotjaments();
+    // Retorna la llista de reserves del camping.
+    public LlistaReserves getLlistaReserves() {
+        return llistaReserves;
+    }
 
-    /**
-     * Retorna el número total de reserves del càmping.
-     * @return el número total de reserves.
-     */
-    int getNumReserves();
+     // Retorna la llista d'allotjaments del camping.
+    public ArrayList<Allotjament> getLlistaAllotjaments() {
+        return llistaAllotjaments;
+    }
 
-    /**
-     * Retorna el número total de clients del càmping.
-     * @return el número total de clients.
-     */
-    int getNumClients();
+    // Retorna la llista de clients del camping.
+    public ArrayList<Client> getLlistaClients() {
+        return llistaClients;
+    }
+
+    // Retorna el número total d'allotjaments del càmping.
+    public int getNumAllotjaments() {
+        return llistaAllotjaments.size();
+    }
+
+    // Retorna el número total de reserves del càmping.
+    public int getNumReserves() {
+        return llistaReserves.getNumReserves();
+    }
+
+    // Retorna el número total de clients del càmping.
+    public int getNumClients() {
+        return llistaClients.size();
+    }
 
     /**
      * Crea un nou objecte de tipus Client i l'afegeix a la llista de clients.
      * @param nom_ el nom del nou client.
      * @param dni_ el DNI del nou client.
      */
-    void afegirClient(String nom_, String dni_);
-
+    public void afegirClient(String nom_, String dni_) {
+        Client client = new Client(nom_, dni_);
+        llistaClients.add(client);
+    }
 
     /**
      * Afegeix una nova parcel·la a la llista d'allotjaments.
@@ -122,8 +131,20 @@ public interface InCamping {
      * @param dataSortida la data de sortida.
      * @throws ExcepcioReserva si no es pot realitzar la reserva.
      */
-    void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva;
+    public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva {
+        Allotjament allotjament = buscarAllotjament(id_);
+        Client client = buscarClient(dni_);
 
+        if (allotjament == null) {
+            throw new ExcepcioReserva("L'allotjament amb ID " + id_ + " no existeix.");
+        }
+        if (client == null) {
+            throw new ExcepcioReserva("El client amb DNI " + dni_ + " no existeix.");
+        }
+
+        // Posem la nova reserva a la llista de reserves
+        llistaReserves.afegirReserva(allotjament, client, dataEntrada, dataSortida);
+    }
     /**
      * Recorre la llista de serveis comprovant el correcte funcionament de cadascun d'ells per contar el número de serveis que estan operatius.
      * @return el nombre de serveis operatius.

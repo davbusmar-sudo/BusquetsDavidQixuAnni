@@ -11,6 +11,8 @@ public class Client implements InClient {
         this.dni = dni;
     }
 
+    // getters y setters
+
     public String getNom() {
         return nom;
     }
