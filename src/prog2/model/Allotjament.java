@@ -41,7 +41,4 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
-
-    // funcio boolean per comprovar si l'allotjament funciona correctament
-    // public boolean correcteFuncionament();
 }
