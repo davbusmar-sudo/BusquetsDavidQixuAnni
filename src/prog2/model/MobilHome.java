@@ -10,12 +10,22 @@ public abstract class MobilHome extends Casa {
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
+    // getter
+    public boolean getTerrassa(){
+        return terrassaBarbacoa;
+    }
+    // setter
+    public void setTerrassaBarbacoa(boolean terrassaBarbacoa){
+        this.terrassaBarbacoa = terrassaBarbacoa;
+    }
+
     // una Mobil-Home té un funcionament correcte si té terrassa amb barbacoa
     @Override
     public boolean correcteFuncionament(){
         return terrassaBarbacoa;
     }
 
+    // Mètode 'toString'
     @Override
     public String toString(){
         return super.toString()+"MobilHome{té terrassa="+terrassaBarbacoa+"}";
