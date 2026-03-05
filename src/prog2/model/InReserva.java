@@ -1,7 +1,7 @@
 package prog2.model;
 
 import java.time.LocalDate;
-//lol
+
 
 public class Reserva implements InReserva {
 
@@ -40,6 +40,13 @@ public class Reserva implements InReserva {
 
     public void setDataSortida(LocalDate dataSortida_) {
         this.dataSortida = dataSortida_;
+    }
+
+    public String toString() {
+        return "Reserva: Allotjament=" + allotjament.getId() +
+                ", Client=" + client.getDni() +
+                ", Entrada=" + dataEntrada +
+                ", Sortida=" + dataSortida;
     }
 
 }
