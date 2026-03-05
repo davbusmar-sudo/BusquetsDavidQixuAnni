@@ -2,22 +2,51 @@ package prog2.model;
 
 import java.time.LocalDate;
 
-public interface InReserva {
 
-    public Allotjament getAllotjament_();
+public class Reserva implements InReserva {
 
-    public Client getClient();
+    private Allotjament allotjament;
+    private Client client;
+    private LocalDate dataEntrada;
+    private LocalDate dataSortida;
 
-    public LocalDate getDataEntrada();
+    public Allotjament getAllotjament_() {
+        return allotjament;
+    }
 
-    public LocalDate getDataSortida();
+    public Client getClient() {
+        return client;
+    }
 
-    public void setAllotjament_(Allotjament allotjament_);
+    public LocalDate getDataEntrada() {
+        return dataEntrada;
+        }
 
-    public void setClient(Client client_);
+    public LocalDate getDataSortida() {
+        return dataSortida;
+    }
 
-    public void setDataEntrada(LocalDate dataEntrada_);
+    public void setAllotjament_(Allotjament allotjament_) {
+        this.allotjament = allotjament_;
+    }
 
-    public void setDataSortida(LocalDate dataSortida_);
+    public void setClient(Client client_) {
+        this.client = client_;
+    }
+
+    public void setDataEntrada(LocalDate dataEntrada_) {
+        this.dataEntrada = dataEntrada_;
+    }
+
+    public void setDataSortida(LocalDate dataSortida_) {
+        this.dataSortida = dataSortida_;
+    }
+
+    public String toString() {
+        return "Reserva: Allotjament=" + allotjament.getId() +
+                ", Client=" + client.getDni() +
+                ", Entrada=" + dataEntrada +
+                ", Sortida=" + dataSortida;
+    }
 
 }
