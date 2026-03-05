@@ -2,7 +2,6 @@ package prog2.model;
 
 import java.time.LocalDate;
 
-
 public class Reserva implements InReserva {
 
     private Allotjament allotjament;
@@ -20,7 +19,7 @@ public class Reserva implements InReserva {
 
     public LocalDate getDataEntrada() {
         return dataEntrada;
-        }
+    }
 
     public LocalDate getDataSortida() {
         return dataSortida;
