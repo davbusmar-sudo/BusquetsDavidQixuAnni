@@ -14,8 +14,22 @@ public abstract class Glamping extends Casa {
         this.casaMascota = casaMascota;
     }
 
-    //  un Glamping té un funcionament correcte si té una casa per a
-    //mascota.
+    // getters
+    public Material getMaterial(){
+        return material;
+    }
+    public boolean getCasaMascota(){
+        return casaMascota;
+    }
+    // setters
+    public void setMaterial(Material material){
+        this.material= material;
+    }
+    public void setCasaMascota(boolean casaMascota){
+        this.casaMascota = casaMascota;
+    }
+
+    // un Glamping té un funcionament correcte si té una casa per a mascota.
     @Override
     public boolean correcteFuncionament(){
         return casaMascota;
