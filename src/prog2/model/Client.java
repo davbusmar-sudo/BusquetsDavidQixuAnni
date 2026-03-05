@@ -2,6 +2,7 @@ package prog2.model;
 
 public class Client {
 
+    // Atributs
     private String nom;
     private String dni;
 
@@ -10,6 +11,7 @@ public class Client {
         this.nom = nom;
         this.dni = dni;
     }
+
     // getters
     public String getNom() {
         return nom;
