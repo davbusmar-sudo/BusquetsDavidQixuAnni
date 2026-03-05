@@ -2,6 +2,7 @@ package prog2.model;
 
 // Els bungalows premium tenen els mateixos serveis que un bungalow, més llençols i tovalloles incloses i wifi gratuït
 public abstract class BungalowPremium extends Bungalow {
+
     // Atributs
     // 'boolean' per indicar si tenen o no
     private boolean serveisExtra;
@@ -21,6 +22,7 @@ public abstract class BungalowPremium extends Bungalow {
     public String getCodiWifi(){
         return codiWifi;
     }
+
     // setters
     public void setServeisExtra(boolean serveisExtra){
         this.serveisExtra = serveisExtra;
@@ -28,6 +30,7 @@ public abstract class BungalowPremium extends Bungalow {
     public void setCodiWifi(String codiWifi){
         this.codiWifi = codiWifi;
     }
+
     // Mètode per saber si el codi Wifi assignat té entre 8 i 16 caràcters.
     public boolean codiWifiCorrecte(String codi){
         if (codi.length() >= 8 && codi.length() <= 16){

@@ -1,8 +1,10 @@
 package prog2.model;
 
 public abstract class Glamping extends Casa {
+
     // enum 'material' del glamping
     public enum Material {TELA, FUSTA}
+
     // Atributs
     private Material material;
     private boolean casaMascota;
@@ -21,6 +23,7 @@ public abstract class Glamping extends Casa {
     public boolean getCasaMascota(){
         return casaMascota;
     }
+
     // setters
     public void setMaterial(Material material){
         this.material= material;
@@ -34,6 +37,7 @@ public abstract class Glamping extends Casa {
     public boolean correcteFuncionament(){
         return casaMascota;
     }
+    //Mètode 'toString'
     @Override
     public String toString(){
         return super.toString()+"Glamping{tipus de material="+material+", té casa per mascota="+casaMascota+"}";

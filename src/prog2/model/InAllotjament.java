@@ -4,10 +4,10 @@ package prog2.model;
  * Interfície que defineix les operacions bàsiques per als allotjaments.
  * @author lauraigual
  */
-
 public interface InAllotjament {
 
     /**
+     *
      * Obté el nom de l'allotjament.
      * @return el nom de l'allotjament.
      */
@@ -55,7 +55,7 @@ public interface InAllotjament {
     /**
      * Enumeració que representa les diferents temporades possibles.
      */
-     enum Temp {
+    enum Temp {
         ALTA,
         BAIXA
     }

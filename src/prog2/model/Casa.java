@@ -8,6 +8,7 @@ public abstract class Casa extends Allotjament {
     private Mida mida;
     private int habitacions;
     private int placesPersones;
+
     // Constructor
     public Casa(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones){
         super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_);
@@ -15,6 +16,7 @@ public abstract class Casa extends Allotjament {
         this.placesPersones = placesPersones;
         this.habitacions = habitacions;
     }
+
     // getters
     public Mida getMida(){
         return mida;

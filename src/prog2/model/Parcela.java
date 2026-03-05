@@ -24,6 +24,7 @@ public abstract class Parcela extends Allotjament {
     public boolean getConnexioElectrica(){
         return connexioElectrica;
     }
+
     // setters
     public void setMida(float mida){
         this.mida = mida;
@@ -31,6 +32,7 @@ public abstract class Parcela extends Allotjament {
     public void setConnexioElectrica(boolean connexioElectrica){
         this.connexioElectrica = connexioElectrica;
     }
+
     /*
     * Mètode que comprova si la parcel·la funciona de manera correcte
     * Per funciona correctament, la parcel·la ha de tenir punt de connexió elèctrica

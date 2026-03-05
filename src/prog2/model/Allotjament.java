@@ -14,6 +14,7 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
+
     // getters
     public String getNom(){
         return this.nom;
@@ -29,6 +30,7 @@ public abstract class Allotjament implements InAllotjament {
             return estadaMinimaBAIXA_;
         }
     }
+
     // setters
     public void setNom(String nom){
         this.nom = nom;

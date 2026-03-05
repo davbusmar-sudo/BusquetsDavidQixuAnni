@@ -33,6 +33,7 @@ public abstract class Bungalow extends Casa {
     public boolean getAireFred(){
         return aireFred;
     }
+
     // setters
     public void setPlacesParquing(int placesParquing){
         this.placesParquing = placesParquing;
@@ -46,6 +47,7 @@ public abstract class Bungalow extends Casa {
     public void setAireFred(boolean aireFred){
         this.aireFred = aireFred;
     }
+
     // Bungalow té un funcionament correcte si té aire fred.
     @Override
     public boolean correcteFuncionament(){

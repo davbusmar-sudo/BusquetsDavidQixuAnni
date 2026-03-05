@@ -4,6 +4,7 @@ public abstract class MobilHome extends Casa {
 
     // Atribut
     private boolean terrassaBarbacoa;
+
     // Constructor
     public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPerPersones, boolean terrassaBarbacoa){
         super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPerPersones);
@@ -14,6 +15,7 @@ public abstract class MobilHome extends Casa {
     public boolean getTerrassa(){
         return terrassaBarbacoa;
     }
+
     // setter
     public void setTerrassaBarbacoa(boolean terrassaBarbacoa){
         this.terrassaBarbacoa = terrassaBarbacoa;

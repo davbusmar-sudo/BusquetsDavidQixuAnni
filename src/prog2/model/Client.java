@@ -19,6 +19,7 @@ public class Client {
     public String getDni() {
         return dni;
     }
+
     // setters
     public void setNom(String nom) {
         this.nom = nom;
