@@ -48,10 +48,7 @@ public class Reserva implements InReserva {
     // Mètode 'toString'
     @Override
     public String toString() {
-        return "Reserva{allotjament=" + allotjament.getId() +
-                ", client=" + client.getDni() +
-                ", entrada=" + dataEntrada +
-                ", sortida=" + dataSortida+ "}";
+        return "Reserva{allotjament=" + allotjament.getId() + ", client=" + client.getDni() +
+                ", entrada=" + dataEntrada + ", sortida=" + dataSortida+ "}";
     }
-
 }
