@@ -19,5 +19,4 @@ public interface InReserva {
     public void setDataEntrada(LocalDate dataEntrada_);
 
     public void setDataSortida(LocalDate dataSortida_);
-
 }

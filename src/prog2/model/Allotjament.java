@@ -43,4 +43,10 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
+
+    // Mètode 'toString'
+    @Override
+    public String toString(){
+        return "Nom="+nom+", Id="+id+", estada mínima en temp ALTA: "+ estadaMinimaALTA_+", estada mínima en temps BAIXA: "+estadaMinimaBAIXA_+".";
+    }
 }

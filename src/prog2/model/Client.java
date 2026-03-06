@@ -30,6 +30,6 @@ public class Client {
 
     // Mètode 'toString'
     public String toString() {
-        return "Nom=" + nom + ", DNI=" + dni;
+        return "Client{nom=" + nom + ", dni=" + dni+"}";
     }
 }
