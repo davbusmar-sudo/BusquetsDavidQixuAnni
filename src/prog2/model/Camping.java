@@ -1,6 +1,8 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
+
+import javax.swing.*;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.time.LocalDate;
@@ -100,8 +102,12 @@ public  abstract class Camping implements InCamping {
         Client client = buscarClient(dni_);
         // buscar l'allotjament pel id
         InAllotjament allotjament = buscarAllotjament(id_);
+        // convertir l'objecte InAllotjament a Allotjament,
+        // perque el metode 'afegirReserva' espera un Allotjament i no interficie
+        // Fer cast, perque estem segur que InAllotjament sempre serà Allotjament
+        Allotjament allotjamentConcret = (Allotjament)allotjament;
         // crear i afegir a la reserva
-        LlistaReserves.afegirReserva(client,allotjament,dataEntrada,dataSortida);
+        llistaReserves.afegirReserva(allotjamentConcret,client,dataEntrada,dataSortida);
     }
 
     // Recorre la llista de serveis comprovant el correcte funcionament de cadascun d'ells per contar el número de serveis que estan operatius.
@@ -135,7 +141,7 @@ public  abstract class Camping implements InCamping {
         while(itrAllotjament.hasNext()) {
             Allotjament allotjament = itrAllotjament.next();
 
-            int estadaActual = allotjament.getEstadaMinima(temp);
+            int estadaActual = (int) allotjament.getEstadaMinima(temp);
             // 'if' (condicio) per comprovar si aquest allotjament que tenim és la estada més curta que
             // l'estada d'actual minim que tenim ara
             if (estadaActual < estadaMinima) {
