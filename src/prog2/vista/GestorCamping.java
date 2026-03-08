@@ -209,7 +209,7 @@ public class GestorCamping {
         // Per completar
         try{
             camping.afegirReserva(idAllotjament,dni,dataEntrada,dataSortida);
-            System.out.println("Reserva 1 afegida correctament");
+            System.out.println("Afegida correctament.");
         } catch (ExcepcioReserva error){
             System.out.println("Error en reserva 1: "+error.getMessage());
         }
@@ -227,7 +227,7 @@ public class GestorCamping {
         // Per completar
         try{
             camping.afegirReserva(idAllotjament,dni,dataEntrada,dataSortida);
-            System.out.println("Reserva 2 afegida correctament");
+            System.out.println("Afegida correctament.");
         }catch (ExcepcioReserva error){
             System.out.println("Error en reserva 2: "+error.getMessage());
         }
@@ -244,7 +244,7 @@ public class GestorCamping {
         // Per completar
         try{
             camping.afegirReserva(idAllotjament,dni,dataEntrada,dataSortida);
-            System.out.println("Reserva 3 afegida correctament");
+            System.out.println("Afegida correctament");
         }catch (ExcepcioReserva error){
             System.out.println("Error en reserva 3: "+error.getMessage());
         }
