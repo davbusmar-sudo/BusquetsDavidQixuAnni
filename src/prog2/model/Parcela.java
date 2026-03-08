@@ -21,7 +21,7 @@ public class Parcela extends Allotjament {
     public float getMida(){
         return mida;
     }
-    public boolean getConnexioElectrica(){
+    public boolean isConnexioElectrica(){
         return connexioElectrica;
     }
 

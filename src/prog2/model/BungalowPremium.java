@@ -1,16 +1,16 @@
 package prog2.model;
 
 // Els bungalows premium tenen els mateixos serveis que un bungalow, més llençols i tovalloles incloses i wifi gratuït
-public abstract class BungalowPremium extends Bungalow {
+public class BungalowPremium extends Bungalow {
 
     // Atributs
-    // 'boolean' per indicar si tenen o no
-    private boolean serveisExtra;
+    private boolean serveisExtra; // Indica si inclou llençols i tovalloles
     private String codiWifi;
 
     // Constructor
-    public BungalowPremium(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
-        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+    public BungalowPremium(String nom, String id, Casa.Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
+        // Cridem al constructor de Bungalow
+        super(nom, id, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         this.serveisExtra = serveisExtra;
         this.codiWifi = codiWifi;
     }
@@ -51,16 +51,4 @@ public abstract class BungalowPremium extends Bungalow {
         return super.toString()+" BungalowPrenium{llençolsTovalloles = "+serveisExtra+", wifi="+codiWifi+"}";
     }
 
-    // No em deixar fer 'new BungalowPremium' en camping, perquè es abstract,
-    // faig un 'BungalowPremium_' que no es abstract i aixi em deixar crear 'new BungalowPremium'
-    public static class BungalowPremium_ extends BungalowPremium{
-        public BungalowPremium_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
-            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,placesParquing,terrassa,tv,aireFred,serveisExtra,codiWifi);
-        }
-
-        @Override
-        public boolean correcteFuncionament(){
-            return getAireFred() && codiWifiCorrecte(getCodiWifi());
-        }
-    }
 }

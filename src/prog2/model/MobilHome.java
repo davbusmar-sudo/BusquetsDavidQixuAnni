@@ -1,13 +1,15 @@
 package prog2.model;
 
-public abstract class MobilHome extends Casa {
+public class MobilHome extends Casa {
 
     // Atribut
     private boolean terrassaBarbacoa;
 
-    // Constructor
-    public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
-        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones);
+    /*
+     * Segons l'enunciat, les estades mínimes per Mobil-Home són 5 nits (Alta) i 3 nits (Baixa).
+     */
+    public MobilHome(String nom, String id, Casa.Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+        super(nom, id, 5L, 3L, mida, habitacions, placesPersones);
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
@@ -33,16 +35,5 @@ public abstract class MobilHome extends Casa {
         return super.toString()+"MobilHome{té terrassa="+terrassaBarbacoa+"}";
     }
 
-    // No em deixar fer 'new MobilHome' en camping, perquè es abstract,
-    // faig un 'MobilHome_' que no es abstract i aixi em deixar crear 'new MobilHome'
-    public static class MobilHome_ extends MobilHome{
-        public MobilHome_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
-            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,terrassaBarbacoa);
-        }
 
-        @Override
-        public boolean correcteFuncionament(){
-            return getTerrassa();
-        }
-    }
 }

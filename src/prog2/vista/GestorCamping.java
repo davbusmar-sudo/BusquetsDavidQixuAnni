@@ -16,7 +16,7 @@ public class GestorCamping {
      */
     public static void main(String[] args) {
 
-        Camping campingMar = new Camping.Camping_("Camping del Mar");
+        Camping campingMar = new Camping("Camping del Mar");
 
         omplirDadesModel(campingMar);
         
