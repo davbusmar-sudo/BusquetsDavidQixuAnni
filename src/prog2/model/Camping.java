@@ -1,13 +1,11 @@
 package prog2.model;
 
 import prog2.vista.ExcepcioReserva;
-
-import javax.swing.*;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-public abstract class Camping implements InCamping {
+public class Camping implements InCamping {
     //Atributs
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
@@ -74,106 +72,74 @@ public abstract class Camping implements InCamping {
     @Override
     // Afegeix una nova parcel·la a la llista d'allotjaments.
     public void afegirParcela(String nom_, String idAllotjament_, float mida, boolean connexioElectrica) {
-        // valor per defecte, pq el constructor de parcela necessita estada minima
-        long estadaMinimaALTA_ = 1;
-        long estadaMinimaBAIXA_ = 1;
-        Parcela novaParcela = new Parcela.Parcela_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, connexioElectrica);
-        llistaAllotjaments.add(novaParcela);
+        // Segons l'enunciat: Parcela = minim 1 dia sempre
+        llistaAllotjaments.add(new Parcela(nom_, idAllotjament_, mida, connexioElectrica));
+    };
     }
     // Afegeix un nou bungalow a la llista d'allotjaments.
-    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred){
-        long estadaMinimaALTA_ = 1;
-        long estadaMinimaBAIXA_ = 1;
-        // convertir string a enum
-        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
-        Bungalow nouBungalow = new Bungalow.Bungalow_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, midaEnum, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
-        llistaAllotjaments.add(nouBungalow);
+    @Override
+    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred) {
+        // Correcció: No usis Bungalow.Bungalow_, usa el constructor normal
+        llistaAllotjaments.add(new Bungalow(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred));
     }
     // Afegeix un bungalow premium a la llista d'allotjaments.
-    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
-        long estadaMinimaALTA_ = 1;
-        long estadaMinimaBAIXA_ = 1;
-        // convertir string a enum
-        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
-        BungalowPremium nouBungalowPremium = new BungalowPremium.BungalowPremium_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, midaEnum, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
-        llistaAllotjaments.add(nouBungalowPremium);
+    @Override
+    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi) {
+        llistaAllotjaments.add(new BungalowPremium(nom_, idAllotjament_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi));
     }
+
+
     // Afegeix una casa glamping a la llista d'allotjaments.
-    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota){
-        long estadaMinimaALTA_ = 1;
-        long estadaMinimaBAIXA_ = 1;
-        // convertir string a enum
-        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
-        Glamping.Material materialEnum = Glamping.Material.valueOf(material.toUpperCase());
-        Glamping nouGlamping = new Glamping.Glamping_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,midaEnum,habitacions,placesPersones,materialEnum,casaMascota);
-        llistaAllotjaments.add(nouGlamping);
+    @Override
+    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota) {
+        llistaAllotjaments.add(new Glamping(nom_, idAllotjament_, mida, habitacions, placesPersones, material, casaMascota));
     }
+
     //Afegeix una mobil-home a la llista d'allotjaments.
-    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
-        long estadaMinimaALTA_ = 1;
-        long estadaMinimaBAIXA_ = 1;
-        // convertir string a enum
-        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
-        MobilHome nouMobilHome = new MobilHome.MobilHome_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,midaEnum,habitacions,placesPersones,terrassaBarbacoa);
-        llistaAllotjaments.add(nouMobilHome);
+    @Override
+    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa) {
+        llistaAllotjaments.add(new MobilHome(nom_, idAllotjament_, mida, habitacions, placesPersones, terrassaBarbacoa));
     }
+
 
     //Afegeix una nova reserva al càmping.
     public void afegirReserva(String id_, String dni_, LocalDate dataEntrada, LocalDate dataSortida) throws ExcepcioReserva{
         // buscar el client pel dni
         Client client = buscarClient(dni_);
         // buscar l'allotjament pel id
-        InAllotjament allotjament = buscarAllotjament(id_);
-        // convertir l'objecte InAllotjament a Allotjament,
-        // perque el metode 'afegirReserva' espera un Allotjament i no interficie
-        // Fer cast, perque estem segur que InAllotjament sempre serà Allotjament
-        Allotjament allotjamentConcret = (Allotjament)allotjament;
-        // crear i afegir a la reserva
-        llistaReserves.afegirReserva(allotjamentConcret,client,dataEntrada,dataSortida);
+        Allotjament allotjament = buscarAllotjament(id_);
+
+        if (client == null) throw new ExcepcioReserva("El client no existeix.");
+        if (allotjament == null) throw new ExcepcioReserva("L'allotjament no existeix.");
+        // Cridem a la llista de reserves que ja té la lògica de validació
+        llistaReserves.afegirReserva(allotjament, client, dataEntrada, dataSortida);
     }
 
     // Recorre la llista de serveis comprovant el correcte funcionament de cadascun d'ells per contar el número de serveis que estan operatius.
     public int calculAllotjamentsOperatius(){
         int comptador = 0;
         // Crear iterator per recorrer la llista
-        Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
+        Iterator<Allotjament> itr = llistaAllotjaments.iterator();
         // bucle per recorrer la llista mentre hi hagui elements a la llista
-        while(itrAllotjament.hasNext()){
-            Allotjament allotjament = itrAllotjament.next();
+        while(itr.hasNext()) {
+            if(itr.next().correcteFuncionament()) comptador++;
             // Comprova que funcioni correctament
-            if(allotjament.correcteFuncionament()){
-                comptador ++;
             }
-        }
-        // retorna el num total d'allotjaments que funciona correcta
         return comptador;
     }
     //
     public Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp) {
         // si no hi ha allotjaments, retorna 'null'
-        if(llistaAllotjaments.isEmpty()){
-            return null;
-        }
-        Allotjament allotjamentEscollit = null;
-        // inicialitzar el valor més gran
-        int estadaMinima = Integer.MAX_VALUE;
-        // crear iterator per recorrer la llista
-        Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
-        // bucle per recorrer la llista mentre hi hagui elements a la llista
-        while(itrAllotjament.hasNext()) {
-            Allotjament allotjament = itrAllotjament.next();
+        if(llistaAllotjaments.isEmpty()) return null;Iterator<Allotjament> itr = llistaAllotjaments.iterator();
+        Allotjament mesCurta = itr.next();
 
-            int estadaActual = (int) allotjament.getEstadaMinima(temp);
-            // 'if' (condicio) per comprovar si aquest allotjament que tenim és la estada més curta que
-            // l'estada d'actual minim que tenim ara
-            if (estadaActual < estadaMinima) {
-                // actualitzar l'estada si compleix la condició
-                estadaMinima = estadaActual;
-                // i guardar l'allotjament que tenim ara
-                allotjamentEscollit = allotjament;
+        while(itr.hasNext()) {
+            Allotjament actual = itr.next();
+            if (actual.getEstadaMinima(temp) < mesCurta.getEstadaMinima(temp)) {
+                mesCurta = actual;
             }
         }
-        return allotjamentEscollit;
+        return mesCurta;
     }
     // Mètode per obtenir la temporada
     public static InAllotjament.Temp getTemporada(LocalDate data){
@@ -195,17 +161,14 @@ public abstract class Camping implements InCamping {
     // Mètode 'buscarAllotjament'
     private Allotjament buscarAllotjament(String idAllotjament){
         // crear un iterador per recorrer la llista d'allotjaments
-        Iterator<Allotjament> itrAllotjament = llistaAllotjaments.iterator();
+        Iterator<Allotjament> itr = llistaAllotjaments.iterator();
         // això vol dir que mentre hi hagui elements a la llista, entra en el bucle
-        while (itrAllotjament.hasNext()){
+        while (itr.hasNext()){
             // agafa el següent element de la llista d'allotjament
-            Allotjament allotjament = itrAllotjament.next();
+            Allotjament a = itr.next();
             // usa 'if'(condicio) per comprovar si l'id és igual al que volem buscar
-            if (allotjament.getId().equals(idAllotjament)){
-                // si coinsideix, retorna l'allotjament
-                return allotjament;
+            if (a.getId().equals(id)) return a;
             }
-        }
         // Si no es troba, retorna 'null'
         return null;
     }
@@ -213,23 +176,14 @@ public abstract class Camping implements InCamping {
     //  Mètode 'buscarClient'
     private Client buscarClient(String dni){
         // Crear iterador
-        Iterator<Client> itrClient = llistaClients.iterator();
+        Iterator<Client> itr = llistaClients.iterator();
         // bucle per recorrer la llista mentre hi hagui elements a la llista
-        while(itrClient.hasNext()){
-            Client client = itrClient.next();
+        while(itr.hasNext()){
+            Client c = itr.next();
             // 'if' (coindicio) : retorna client si el DNI coincideix
-            if(client.getDni().equals(dni)) {
-                return client;
+            if(c.getDni().equals(dni)) return c;
             }
-        }
         // Si no es troba, retorna 'null'
         return null;
     }
-    // No em deixar fer 'new Camping' en gestorCamping, perquè es abstract,
-    // faig un 'Camping_' que no es abstract i aixi em deixar crear 'new Camping'
-    public static class Camping_ extends Camping{
-        public Camping_ (String nom){
-            super(nom);
-        }
-    }
-}
+
