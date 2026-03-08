@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 import java.time.LocalDate;
 
-public  abstract class Camping implements InCamping {
+public abstract class Camping implements InCamping {
     //Atributs
     private String nom;
     private ArrayList<Allotjament> llistaAllotjaments;
@@ -71,29 +71,51 @@ public  abstract class Camping implements InCamping {
         llistaClients.add(nouClient);
     }
 
+    @Override
     // Afegeix una nova parcel·la a la llista d'allotjaments.
-    public void afegirParcela(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, float mida, boolean connexioElectrica) {
+    public void afegirParcela(String nom_, String idAllotjament_, float mida, boolean connexioElectrica) {
+        // valor per defecte, pq el constructor de parcela necessita estada minima
+        long estadaMinimaALTA_ = 1;
+        long estadaMinimaBAIXA_ = 1;
         Parcela novaParcela = new Parcela.Parcela_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, connexioElectrica);
         llistaAllotjaments.add(novaParcela);
     }
     // Afegeix un nou bungalow a la llista d'allotjaments.
-    public void afegirBungalow(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Casa.Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred){
-        Bungalow nouBungalow = new Bungalow.Bungalow_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
+    public void afegirBungalow(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred){
+        long estadaMinimaALTA_ = 1;
+        long estadaMinimaBAIXA_ = 1;
+        // convertir string a enum
+        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
+        Bungalow nouBungalow = new Bungalow.Bungalow_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, midaEnum, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred);
         llistaAllotjaments.add(nouBungalow);
     }
     // Afegeix un bungalow premium a la llista d'allotjaments.
-    public void afegirBungalowPremium(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Casa.Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
-        BungalowPremium nouBungalowPremium = new BungalowPremium.BungalowPremium_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
+    public void afegirBungalowPremium(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
+        long estadaMinimaALTA_ = 1;
+        long estadaMinimaBAIXA_ = 1;
+        // convertir string a enum
+        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
+        BungalowPremium nouBungalowPremium = new BungalowPremium.BungalowPremium_(nom_, idAllotjament_, estadaMinimaALTA_, estadaMinimaBAIXA_, midaEnum, habitacions, placesPersones, placesParquing, terrassa, tv, aireFred, serveisExtra, codiWifi);
         llistaAllotjaments.add(nouBungalowPremium);
     }
     // Afegeix una casa glamping a la llista d'allotjaments.
-    public void afegirGlamping(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Casa.Mida mida, int habitacions, int placesPersones, Glamping.Material material, boolean casaMascota){
-        Glamping nouGlamping = new Glamping.Glamping_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,material,casaMascota);
+    public void afegirGlamping(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, String material, boolean casaMascota){
+        long estadaMinimaALTA_ = 1;
+        long estadaMinimaBAIXA_ = 1;
+        // convertir string a enum
+        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
+        Glamping.Material materialEnum = Glamping.Material.valueOf(material.toUpperCase());
+        Glamping nouGlamping = new Glamping.Glamping_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,midaEnum,habitacions,placesPersones,materialEnum,casaMascota);
         llistaAllotjaments.add(nouGlamping);
     }
     //Afegeix una mobil-home a la llista d'allotjaments.
-    public void afegirMobilHome(String nom_, String idAllotjament_, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Casa.Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
-        MobilHome nouMobilHome = new MobilHome.MobilHome_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,terrassaBarbacoa);
+    public void afegirMobilHome(String nom_, String idAllotjament_, String mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
+        long estadaMinimaALTA_ = 1;
+        long estadaMinimaBAIXA_ = 1;
+        // convertir string a enum
+        Casa.Mida midaEnum = Casa.Mida.valueOf(mida.toUpperCase());
+        MobilHome nouMobilHome = new MobilHome.MobilHome_(nom_,idAllotjament_,estadaMinimaALTA_,estadaMinimaBAIXA_,midaEnum,habitacions,placesPersones,terrassaBarbacoa);
+        llistaAllotjaments.add(nouMobilHome);
     }
 
     //Afegeix una nova reserva al càmping.
@@ -202,5 +224,12 @@ public  abstract class Camping implements InCamping {
         }
         // Si no es troba, retorna 'null'
         return null;
+    }
+    // No em deixar fer 'new Camping' en gestorCamping, perquè es abstract,
+    // faig un 'Camping_' que no es abstract i aixi em deixar crear 'new Camping'
+    public static class Camping_ extends Camping{
+        public Camping_ (String nom){
+            super(nom);
+        }
     }
 }

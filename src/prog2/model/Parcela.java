@@ -11,7 +11,7 @@ public abstract class Parcela extends Allotjament {
     // Constructor
     public Parcela (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, float mida, boolean connexioElectrica){
         // cridar al constructor de la classe 'Allotjament' per inicialitzar els atributs heretats
-        super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_);
+        super(nom,id,estadaMinimaALTA_, estadaMinimaBAIXA_);
         // Atributs específics de Parcel·la
         this.mida = mida;
         this.connexioElectrica = connexioElectrica;
@@ -51,8 +51,8 @@ public abstract class Parcela extends Allotjament {
     // No em deixar fer 'new Parcela' en camping, perquè es abstract,
     // faig un 'Parcela_' que no es abstract i aixi em deixar crear 'new Parcela'
     public static class Parcela_ extends Parcela{
-        public Parcela_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, float mida, boolean connexioElectrica){
-            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,connexioElectrica);
+        public Parcela_ (String nom, String id,  long estadaMinimaALTA_, long estadaMinimaBAIXA_,float mida, boolean connexioElectrica){
+            super(nom,id, estadaMinimaALTA_, estadaMinimaBAIXA_,mida,connexioElectrica);
         }
 
         @Override
