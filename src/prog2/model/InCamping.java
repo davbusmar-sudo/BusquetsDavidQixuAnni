@@ -135,4 +135,3 @@ public interface InCamping {
      */
     Allotjament getAllotjamentEstadaMesCurta(InAllotjament.Temp temp);
 }
-

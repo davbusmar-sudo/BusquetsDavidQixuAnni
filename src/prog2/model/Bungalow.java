@@ -59,4 +59,17 @@ public abstract class Bungalow extends Casa {
     public String toString(){
         return super.toString()+" Bungalow{places de Parking="+placesParquing+", té terrassa="+terrassa+", té televisió= "+ tv+ ", té aire fred="+aireFred+"}";
     }
+
+    // No em deixar fer 'new Bungalow' en camping, perquè es abstract,
+    // faig un 'Bungalow_' que no es abstract i aixi em deixar crear 'new Bungalow'
+    public static class Bungalow_ extends Bungalow{
+        public Bungalow_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred){
+            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,placesParquing,terrassa,tv,aireFred);
+        }
+
+        @Override
+        public boolean correcteFuncionament(){
+            return getAireFred();
+        }
+    }
 }

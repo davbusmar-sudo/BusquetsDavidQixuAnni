@@ -47,4 +47,17 @@ public abstract class Parcela extends Allotjament {
     public String toString(){
         return super.toString()+"Parcela{mida="+mida+", connexioElectrica="+connexioElectrica+"}";
     }
+
+    // No em deixar fer 'new Parcela' en camping, perquè es abstract,
+    // faig un 'Parcela_' que no es abstract i aixi em deixar crear 'new Parcela'
+    public static class Parcela_ extends Parcela{
+        public Parcela_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, float mida, boolean connexioElectrica){
+            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,connexioElectrica);
+        }
+
+        @Override
+        public boolean correcteFuncionament(){
+            return getConnexioElectrica();
+        }
+    }
 }

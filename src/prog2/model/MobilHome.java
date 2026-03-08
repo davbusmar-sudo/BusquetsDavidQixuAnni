@@ -6,8 +6,8 @@ public abstract class MobilHome extends Casa {
     private boolean terrassaBarbacoa;
 
     // Constructor
-    public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPerPersones, boolean terrassaBarbacoa){
-        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPerPersones);
+    public MobilHome(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
+        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones);
         this.terrassaBarbacoa = terrassaBarbacoa;
     }
 
@@ -31,5 +31,18 @@ public abstract class MobilHome extends Casa {
     @Override
     public String toString(){
         return super.toString()+"MobilHome{té terrassa="+terrassaBarbacoa+"}";
+    }
+
+    // No em deixar fer 'new MobilHome' en camping, perquè es abstract,
+    // faig un 'MobilHome_' que no es abstract i aixi em deixar crear 'new MobilHome'
+    public static class MobilHome_ extends MobilHome{
+        public MobilHome_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, boolean terrassaBarbacoa){
+            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,terrassaBarbacoa);
+        }
+
+        @Override
+        public boolean correcteFuncionament(){
+            return getTerrassa();
+        }
     }
 }

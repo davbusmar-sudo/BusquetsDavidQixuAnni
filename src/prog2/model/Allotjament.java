@@ -35,7 +35,7 @@ public abstract class Allotjament implements InAllotjament {
     public void setNom(String nom){
         this.nom = nom;
     }
-    public void getId(String id){
+    public void setId(String id){
         this.id = id;
     }
     // mètode que estableix l'estada mínima per ac ada temporada
@@ -43,6 +43,7 @@ public abstract class Allotjament implements InAllotjament {
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
     }
+
 
     // Mètode 'toString'
     @Override

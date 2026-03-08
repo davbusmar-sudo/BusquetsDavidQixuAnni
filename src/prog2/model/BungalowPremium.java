@@ -50,4 +50,17 @@ public abstract class BungalowPremium extends Bungalow {
     public String toString(){
         return super.toString()+" BungalowPrenium{llençolsTovalloles = "+serveisExtra+", wifi="+codiWifi+"}";
     }
+
+    // No em deixar fer 'new BungalowPremium' en camping, perquè es abstract,
+    // faig un 'BungalowPremium_' que no es abstract i aixi em deixar crear 'new BungalowPremium'
+    public static class BungalowPremium_ extends BungalowPremium{
+        public BungalowPremium_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, int placesParquing, boolean terrassa, boolean tv, boolean aireFred, boolean serveisExtra, String codiWifi){
+            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,placesParquing,terrassa,tv,aireFred,serveisExtra,codiWifi);
+        }
+
+        @Override
+        public boolean correcteFuncionament(){
+            return getAireFred() && codiWifiCorrecte(getCodiWifi());
+        }
+    }
 }

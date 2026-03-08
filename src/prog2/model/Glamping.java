@@ -10,8 +10,8 @@ public abstract class Glamping extends Casa {
     private boolean casaMascota;
 
     //Constructor
-    public Glamping(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int numHabitacions, int placesPerPersones, Material material, boolean casaMascota){
-        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, numHabitacions, placesPerPersones);
+    public Glamping(String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, Material material, boolean casaMascota){
+        super(nom, id, estadaMinimaALTA_, estadaMinimaBAIXA_, mida, habitacions, placesPersones);
         this.material = material;
         this.casaMascota = casaMascota;
     }
@@ -41,5 +41,18 @@ public abstract class Glamping extends Casa {
     @Override
     public String toString(){
         return super.toString()+"Glamping{tipus de material="+material+", té casa per mascota="+casaMascota+"}";
+    }
+
+    // No em deixar fer 'new Glamping' en camping, perquè es abstract,
+    // faig un 'Glamping_' que no es abstract i aixi em deixar crear 'new Glamping'
+    public static class Glamping_ extends Glamping{
+        public Glamping_ (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, Mida mida, int habitacions, int placesPersones, Material material, boolean casaMascota){
+            super(nom,id,estadaMinimaALTA_,estadaMinimaBAIXA_,mida,habitacions,placesPersones,material,casaMascota);
+        }
+
+        @Override
+        public boolean correcteFuncionament(){
+            return getCasaMascota();
+        }
     }
 }
