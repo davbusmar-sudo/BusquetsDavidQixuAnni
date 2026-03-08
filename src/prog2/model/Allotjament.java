@@ -30,6 +30,12 @@ public abstract class Allotjament implements InAllotjament {
             return estadaMinimaBAIXA_;
         }
     }
+    public long getEstadaMinimaAlta(){
+        return this.estadaMinimaALTA_;
+    }
+    public long getEstadaMinimaBaixa(){
+        return this.estadaMinimaBAIXA_;
+    }
 
     // setters
     public void setNom(String nom){
