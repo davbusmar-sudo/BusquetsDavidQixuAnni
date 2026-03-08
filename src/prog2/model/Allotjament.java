@@ -44,7 +44,7 @@ public abstract class Allotjament implements InAllotjament {
     public void setId(String id){
         this.id = id;
     }
-    // mètode que estableix l'estada mínima per ac ada temporada
+    // mètode que estableix l'estada mínima per a cada temporada
     public void setEstadaMinima(long estadaMinimaALTA_, long estadaMinimaBAIXA_){
         this.estadaMinimaALTA_ = estadaMinimaALTA_;
         this.estadaMinimaBAIXA_ = estadaMinimaBAIXA_;
