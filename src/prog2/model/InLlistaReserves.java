@@ -37,10 +37,7 @@ public interface InLlistaReserves {
             Reserva novaReserva = new Reserva(allotjament, client, dataEntrada, dataSortida);
             llista.add(novaReserva);
 
-                /**
-                 * Retorna el número de reserves de la llista.
-                 * @return el número de reserves.
-                 */
+
 
     }
 

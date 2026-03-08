@@ -213,6 +213,10 @@ public class GestorCamping {
 
         // Intentar afegir la reserva amb la informació indicada i si no és possible mostrar el missatge d'error.
         // Per completar
+
+
+
+
            
         // 3. Afegeix una reserva pel client amb DNI "789101A" de l'allotjament amb identificador "300Z"
         // amb la data d'entrada 25 de Febrer del 2026 i data de sortida 28 de febrer del 2026.
