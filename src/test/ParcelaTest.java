@@ -24,7 +24,7 @@ class ParcelaTest {
         assertEquals("Parcela B", p.getNom());
         assertEquals("P002", p.getId());
         assertEquals(30.5f, p.getMida());
-        assertFalse(p.isConnexioElectrica());
+        assertFalse(p.getConnexioElectrica());
     }
 
     @Test
@@ -40,13 +40,13 @@ class ParcelaTest {
 
     @Test
     void testIsConnexioElectrica() {
-        assertTrue(parcela.isConnexioElectrica());
+        assertTrue(parcela.getConnexioElectrica());
     }
 
     @Test
     void testSetConnexioElectrica() {
         parcela.setConnexioElectrica(false);
-        assertFalse(parcela.isConnexioElectrica());
+        assertFalse(parcela.getConnexioElectrica());
     }
 
     @Test

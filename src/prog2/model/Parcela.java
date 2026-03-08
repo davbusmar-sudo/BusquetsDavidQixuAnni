@@ -1,7 +1,7 @@
 package prog2.model;
 
 // Parcel·la hereta de la classe Allotjament
-public abstract class Parcela extends Allotjament {
+public class Parcela extends Allotjament {
     // Atributs
     // la mida de la parcel·la en metres quadrats
     private float mida;
@@ -9,9 +9,9 @@ public abstract class Parcela extends Allotjament {
     private boolean connexioElectrica;
 
     // Constructor
-    public Parcela (String nom, String id, long estadaMinimaALTA_, long estadaMinimaBAIXA_, float mida, boolean connexioElectrica){
+    public Parcela (String nom, String id, float mida, boolean connexioElectrica){
         // cridar al constructor de la classe 'Allotjament' per inicialitzar els atributs heretats
-        super(nom,id,estadaMinimaALTA_, estadaMinimaBAIXA_);
+        super(nom,id,1L, 1L);
         // Atributs específics de Parcel·la
         this.mida = mida;
         this.connexioElectrica = connexioElectrica;
@@ -48,16 +48,4 @@ public abstract class Parcela extends Allotjament {
         return super.toString()+"Parcela{mida="+mida+", connexioElectrica="+connexioElectrica+"}";
     }
 
-    // No em deixar fer 'new Parcela' en camping, perquè es abstract,
-    // faig un 'Parcela_' que no es abstract i aixi em deixar crear 'new Parcela'
-    public static class Parcela_ extends Parcela{
-        public Parcela_ (String nom, String id,  long estadaMinimaALTA_, long estadaMinimaBAIXA_,float mida, boolean connexioElectrica){
-            super(nom,id, estadaMinimaALTA_, estadaMinimaBAIXA_,mida,connexioElectrica);
-        }
-
-        @Override
-        public boolean correcteFuncionament(){
-            return getConnexioElectrica();
-        }
-    }
 }
